@@ -14,6 +14,32 @@ library(tidyverse)
 ```
 
 ```{r dataset}
-gapminder_1997 <- read_csv("gapminder_1997.csv")
+getwd()
 ```
+
+```{r data}
+gapminder_dataset <- read_csv("../gapminder_data.csv")
+```
+
+```{r}
+ggplot(gapminder_dataset, aes(x = year, y = pop)) +
+  geom_point() +
+  labs(x = "Year", y = "Population", title = "Year vs. Population") + 
+  facet_wrap(vars(continent))
+```
+There are two outliers, Asia and Oceania. 
+
+```{r}
+gapminder_dataset %>% 
+  filter(pop > 1e9) %>% 
+  select(country) %>% 
+  unique()
+
+```
+
+Isabella Camilleri
+
+
+
+
 
